@@ -1,0 +1,172 @@
+[
+  {
+    "topic": 0,
+    "terms": [
+      "trump",
+      "donald",
+      "donald trump",
+      "president",
+      "campaign",
+      "twitter",
+      "republican",
+      "just",
+      "white",
+      "like",
+      "trump said",
+      "image"
+    ]
+  },
+  {
+    "topic": 1,
+    "terms": [
+      "china",
+      "myanmar",
+      "rohingya",
+      "chinese",
+      "beijing",
+      "said",
+      "taiwan",
+      "xi",
+      "trade",
+      "united",
+      "bangladesh",
+      "united states"
+    ]
+  },
+  {
+    "topic": 2,
+    "terms": [
+      "korea",
+      "north",
+      "north korea",
+      "nuclear",
+      "korean",
+      "missile",
+      "south",
+      "south korea",
+      "pyongyang",
+      "sanctions",
+      "north korean",
+      "japan"
+    ]
+  },
+  {
+    "topic": 3,
+    "terms": [
+      "tax",
+      "senate",
+      "house",
+      "republican",
+      "republicans",
+      "said",
+      "obamacare",
+      "healthcare",
+      "congress",
+      "legislation",
+      "democrats",
+      "obama"
+    ]
+  },
+  {
+    "topic": 4,
+    "terms": [
+      "russia",
+      "russian",
+      "comey",
+      "intelligence",
+      "fbi",
+      "putin",
+      "moscow",
+      "investigation",
+      "flynn",
+      "said",
+      "committee",
+      "house"
+    ]
+  },
+  {
+    "topic": 5,
+    "terms": [
+      "clinton",
+      "hillary",
+      "hillary clinton",
+      "sanders",
+      "campaign",
+      "democratic",
+      "emails",
+      "email",
+      "presidential",
+      "state",
+      "election",
+      "bernie"
+    ]
+  },
+  {
+    "topic": 6,
+    "terms": [
+      "eu",
+      "brexit",
+      "britain",
+      "european",
+      "minister",
+      "said",
+      "merkel",
+      "talks",
+      "party",
+      "union",
+      "parliament",
+      "government"
+    ]
+  },
+  {
+    "topic": 7,
+    "terms": [
+      "boiler",
+      "boiler room",
+      "acr",
+      "room",
+      "pm",
+      "00 pm",
+      "radio",
+      "00",
+      "join",
+      "broadcast",
+      "political animals",
+      "animals"
+    ]
+  },
+  {
+    "topic": 8,
+    "terms": [
+      "iran",
+      "syria",
+      "said",
+      "saudi",
+      "islamic",
+      "syrian",
+      "islamic state",
+      "state",
+      "al",
+      "iraq",
+      "kurdish",
+      "turkey"
+    ]
+  },
+  {
+    "topic": 9,
+    "terms": [
+      "police",
+      "people",
+      "black",
+      "obama",
+      "video",
+      "gun",
+      "court",
+      "said",
+      "just",
+      "like",
+      "law",
+      "man"
+    ]
+  }
+]

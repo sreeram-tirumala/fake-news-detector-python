@@ -1,0 +1,206 @@
+{
+  "real": [
+    {
+      "term": "said",
+      "count": 99076
+    },
+    {
+      "term": "trump",
+      "count": 60261
+    },
+    {
+      "term": "reuters",
+      "count": 29112
+    },
+    {
+      "term": "president",
+      "count": 28698
+    },
+    {
+      "term": "state",
+      "count": 21691
+    },
+    {
+      "term": "government",
+      "count": 19262
+    },
+    {
+      "term": "house",
+      "count": 18089
+    },
+    {
+      "term": "new",
+      "count": 17792
+    },
+    {
+      "term": "republican",
+      "count": 16879
+    },
+    {
+      "term": "states",
+      "count": 16811
+    },
+    {
+      "term": "united",
+      "count": 15640
+    },
+    {
+      "term": "people",
+      "count": 15388
+    },
+    {
+      "term": "year",
+      "count": 14925
+    },
+    {
+      "term": "told",
+      "count": 14286
+    },
+    {
+      "term": "washington",
+      "count": 13113
+    },
+    {
+      "term": "party",
+      "count": 13111
+    },
+    {
+      "term": "election",
+      "count": 12888
+    },
+    {
+      "term": "united states",
+      "count": 12235
+    },
+    {
+      "term": "campaign",
+      "count": 10932
+    },
+    {
+      "term": "north",
+      "count": 10838
+    },
+    {
+      "term": "donald",
+      "count": 10514
+    },
+    {
+      "term": "security",
+      "count": 10490
+    },
+    {
+      "term": "white",
+      "count": 10374
+    },
+    {
+      "term": "court",
+      "count": 10250
+    },
+    {
+      "term": "donald trump",
+      "count": 10222
+    }
+  ],
+  "fake": [
+    {
+      "term": "trump",
+      "count": 88638
+    },
+    {
+      "term": "said",
+      "count": 33957
+    },
+    {
+      "term": "president",
+      "count": 28861
+    },
+    {
+      "term": "people",
+      "count": 27085
+    },
+    {
+      "term": "just",
+      "count": 21920
+    },
+    {
+      "term": "obama",
+      "count": 21379
+    },
+    {
+      "term": "clinton",
+      "count": 20311
+    },
+    {
+      "term": "donald",
+      "count": 18519
+    },
+    {
+      "term": "like",
+      "count": 18491
+    },
+    {
+      "term": "donald trump",
+      "count": 17093
+    },
+    {
+      "term": "video",
+      "count": 16815
+    },
+    {
+      "term": "hillary",
+      "count": 16441
+    },
+    {
+      "term": "news",
+      "count": 15503
+    },
+    {
+      "term": "new",
+      "count": 15299
+    },
+    {
+      "term": "time",
+      "count": 14147
+    },
+    {
+      "term": "white",
+      "count": 14064
+    },
+    {
+      "term": "state",
+      "count": 13921
+    },
+    {
+      "term": "media",
+      "count": 12406
+    },
+    {
+      "term": "twitter",
+      "count": 12105
+    },
+    {
+      "term": "america",
+      "count": 11888
+    },
+    {
+      "term": "american",
+      "count": 11740
+    },
+    {
+      "term": "house",
+      "count": 11665
+    },
+    {
+      "term": "campaign",
+      "count": 11573
+    },
+    {
+      "term": "right",
+      "count": 11186
+    },
+    {
+      "term": "don",
+      "count": 10642
+    }
+  ]
+}
