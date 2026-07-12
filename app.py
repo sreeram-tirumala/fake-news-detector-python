@@ -1,5 +1,5 @@
 import streamlit as st
-import shap, os
+import shap, os, re
 from utils.io import load_artifact, newest_artifact
 
 st.set_page_config(page_title='AI Fake News Detector', page_icon='📰', layout='wide')
@@ -25,6 +25,9 @@ with tabs[0]:
         st.write("3) Paste text and predict.")
     headline = st.text_input("Headline (optional)")
     body = st.text_area("Article text", height=220)
+    explain_with_claude = st.checkbox(
+        "Explain with Claude Haiku (plain-English rationale from SHAP tokens)", value=False
+    )
     col_pred, col_expl = st.columns([1,1])
     if st.button("Predict") and model is not None:
         text = (headline + " " + body).strip()
@@ -36,15 +39,74 @@ with tabs[0]:
             with col_pred:
                 st.metric("Predicted label", label)
                 st.write(f"**Probability (real):** {proba:.3f}")
+
+            top_terms = []
             try:
                 import shap
-                explainer = shap.Explainer(model.named_steps['clf'], model.named_steps['tfidf'].transform)
+                clf = model.named_steps['clf']
+                tfidf = model.named_steps['tfidf']
+
+                def predict_fn(texts):
+                    return clf.predict_proba(tfidf.transform(texts))[:, 1]
+
+                explainer = shap.Explainer(predict_fn, shap.maskers.Text(r"\w+"))
                 sv = explainer([text])
-                st.subheader("Top contributing words")
-                shap.plots.text(sv[0], display=False)
-                st.pyplot(bbox_inches="tight")
+
+                values = np.asarray(sv[0].values)
+                if values.ndim > 1:
+                    values = values[:, -1]
+                tokens = list(sv[0].data)
+
+                # SHAP's text masker leaves punctuation-fused fragments (e.g. '") - The"',
+                # bare '","'). Strip non-word characters and drop anything with no letters.
+                cleaned = []
+                for tok, val in zip(tokens, values):
+                    t = re.sub(r"[^\w\s'-]", " ", str(tok))
+                    t = re.sub(r"\s+", " ", t).strip()
+                    t = t.strip(" -'")
+                    if t and any(c.isalpha() for c in t):
+                        cleaned.append((t, float(val)))
+
+                top_terms = sorted(cleaned, key=lambda t: abs(t[1]), reverse=True)[:10]
+
+                if top_terms:
+                    st.subheader("Top contributing words")
+                    st.caption(
+                        "Words with the largest SHAP contribution to this prediction. "
+                        "Positive pushes toward REAL, negative pushes toward FAKE."
+                    )
+                    terms_df = pd.DataFrame(top_terms, columns=["word", "shap_value"])
+                    terms_df["direction"] = terms_df["shap_value"].apply(
+                        lambda v: "toward real" if v > 0 else "toward fake"
+                    )
+                    chart = alt.Chart(terms_df).mark_bar().encode(
+                        x=alt.X("shap_value:Q", title="SHAP contribution"),
+                        y=alt.Y("word:N", sort="-x", title=None),
+                        color=alt.Color(
+                            "direction:N",
+                            scale=alt.Scale(domain=["toward real", "toward fake"], range=["#2a9d8f", "#e76f51"]),
+                            legend=alt.Legend(title=None),
+                        ),
+                        tooltip=["word", "shap_value"],
+                    )
+                    st.altair_chart(chart, use_container_width=True)
+                else:
+                    st.info("No clean SHAP tokens to display for this text.")
             except Exception:
-                st.info("SHAP text plot may not render everywhere; predictions still work.")
+                st.info("SHAP explanation unavailable; predictions still work.")
+
+            if explain_with_claude:
+                if not top_terms:
+                    st.info("No SHAP tokens available to narrate.")
+                else:
+                    try:
+                        from utils.llm_explain import narrate_shap
+                        st.subheader("Plain-English rationale (Claude Haiku)")
+                        with st.spinner("Asking Claude to narrate the SHAP evidence..."):
+                            rationale = narrate_shap(text, label, proba, top_terms)
+                        st.write(rationale)
+                    except Exception as e:
+                        st.info(f"Claude explanation unavailable: {e}")
     else:
         st.info("Train a model first to enable predictions.")
 

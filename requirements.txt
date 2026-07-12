@@ -10,3 +10,8 @@ datasets
 transformers
 torch
 tqdm
+anthropic
+python-dotenv
+fastapi
+uvicorn
+trafilatura
