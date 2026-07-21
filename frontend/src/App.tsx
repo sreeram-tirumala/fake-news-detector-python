@@ -1,20 +1,9 @@
 import { useState } from "react";
 import "./App.css";
 import PredictTab from "./components/tabs/PredictTab";
-import DataWranglingTab from "./components/tabs/DataWranglingTab";
-import TimeSeriesTab from "./components/tabs/TimeSeriesTab";
-import PcaClustersTab from "./components/tabs/PcaClustersTab";
-import TopicsTab from "./components/tabs/TopicsTab";
-import ModelMetricsTab from "./components/tabs/ModelMetricsTab";
+import DataVizTab from "./components/tabs/DataVizTab";
 
-const TABS = [
-  "Predict",
-  "Data Wrangling",
-  "Time Series",
-  "PCA & Clusters",
-  "Topics (NMF)",
-  "Model Metrics",
-] as const;
+const TABS = ["Predict", "Data Viz"] as const;
 
 type Tab = (typeof TABS)[number];
 
@@ -37,11 +26,7 @@ function App() {
       </nav>
       <div className="tab-content">
         {active === "Predict" && <PredictTab />}
-        {active === "Data Wrangling" && <DataWranglingTab />}
-        {active === "Time Series" && <TimeSeriesTab />}
-        {active === "PCA & Clusters" && <PcaClustersTab />}
-        {active === "Topics (NMF)" && <TopicsTab />}
-        {active === "Model Metrics" && <ModelMetricsTab />}
+        {active === "Data Viz" && <DataVizTab />}
       </div>
     </div>
   );

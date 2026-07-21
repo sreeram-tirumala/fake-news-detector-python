@@ -25,10 +25,14 @@ def top_terms_per_class(texts, labels, n=20, ngram=(1,2)):
     }
 
 def parse_date_series(df):
-    # for ISOT, date often like 'December 31, 2017'; try best-effort parse
+    # for ISOT, date often like 'December 31, 2017'; try best-effort parse.
+    # True.csv's dates carry a trailing space that Fake.csv's don't -- pandas'
+    # format-inference fast path locks a format from the first row and NaTs
+    # every row that doesn't match byte-for-byte, silently dropping one whole
+    # class's dates if not stripped first.
     for c in ["date","Date","published","publish_date"]:
         if c in df.columns:
-            d = pd.to_datetime(df[c], errors="coerce", infer_datetime_format=True)
+            d = pd.to_datetime(df[c].astype(str).str.strip(), errors="coerce")
             if d.notna().sum() > 0:
                 return d
     return None

@@ -24,11 +24,13 @@ def main():
                 raise ValueError('Could not find text/content column')
         if 'title' not in df.columns:
             df['title'] = ''
+        if 'date' not in df.columns:
+            df['date'] = ''
         df['label'] = lbl
 
     # --- Merge and shuffle ---
     df = pd.concat(
-        [df_true[['title', 'text', 'label']], df_fake[['title', 'text', 'label']]],
+        [df_true[['title', 'text', 'label', 'date']], df_fake[['title', 'text', 'label', 'date']]],
         ignore_index=True
     )
     df = df.sample(frac=1.0, random_state=42).reset_index(drop=True)
