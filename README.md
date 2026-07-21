@@ -28,6 +28,7 @@ utils/               shared logic, used by the backend (not Streamlit-specific)
 scripts/             training + evaluation, unchanged from the original project
   prepare_isot.py, train_sklearn.py, train_transformer.py, make_viz_artifacts.py
   eval_leakage.py       quantifies how much of the reported accuracy is dataset-artifact leakage
+  eval_ood.py           temporal holdout + optional external-dataset generalization check
 
 app.py               legacy Streamlit app -- still runs, being phased out as React reaches parity
 ```
@@ -59,7 +60,7 @@ system prompt now explicitly requires neutral "training-data pattern" framing in
 | **FastAPI backend** | Done. All endpoints tested directly: `/predict`, `/predict/url`, `/predict/explain`, `/corroborate`, and the 7 `/data/*` endpoints. |
 | **React Predict tab** | Done. Full 3-tier UI (model score / SHAP + narration / web corroboration) verified end-to-end in a real browser with live API calls -- see the screenshots from this session's QA pass. |
 | **React: other 5 tabs** (Data Wrangling, Time Series, PCA & Clusters, Topics, Model Metrics) | **Not built yet.** Currently placeholder stubs ("Coming soon"). The backend endpoints for all of them already exist and are tested (`/data/*`) -- only the frontend components remain. |
-| **`scripts/eval_ood.py`** (out-of-distribution eval) | Not built yet. |
+| **`scripts/eval_ood.py`** (out-of-distribution eval) | Done. Temporal holdout (train on pre-Oct-2017 ISOT, test on later articles) shows no meaningful degradation (+0.4% vs. random-split baseline) -- consistent with the leakage finding that the model's signal is mostly a stable formatting artifact, not evolving content. Also supports `--ood_csv` to test against a genuinely different dataset (LIAR, FakeNewsNet, etc.) if you have one. See `artifacts/ood_eval.json`. |
 | **Retiring `app.py`** | Not done -- intentionally, since React doesn't have feature parity yet. The old Streamlit app still runs standalone if you want the full 6-tab experience today. |
 
 ## Is it "live"? 

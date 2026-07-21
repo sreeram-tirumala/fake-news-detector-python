@@ -1,0 +1,43 @@
+[
+  {
+    "condition": "baseline_random_split",
+    "n_test": 8980,
+    "accuracy": 0.9924276169265034,
+    "precision": 0.9911463187325257,
+    "recall": 0.9929971988795518,
+    "f1": 0.992070895522388,
+    "roc_auc": 0.999552085172513,
+    "confusion_matrix": [
+      [
+        4658,
+        38
+      ],
+      [
+        30,
+        4254
+      ]
+    ]
+  },
+  {
+    "condition": "temporal_holdout",
+    "n_test": 9226,
+    "accuracy": 0.9968567092998049,
+    "precision": 0.999089667728721,
+    "recall": 0.9976139075105102,
+    "f1": 0.9983512422536813,
+    "roc_auc": 0.9997064504702006,
+    "confusion_matrix": [
+      [
+        417,
+        8
+      ],
+      [
+        21,
+        8780
+      ]
+    ],
+    "accuracy_delta_vs_baseline": 0.004429092373301469,
+    "cutoff_date": "2017-10-01",
+    "n_train": 24059
+  }
+]
