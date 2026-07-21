@@ -1,0 +1,314 @@
+{
+  "model_path": "artifacts/sklearn_logreg_1765973522.joblib",
+  "n_cases": 6,
+  "n_passed": 6,
+  "total_violations": 0,
+  "cases": [
+    {
+      "tag": "real_reuters_dateline",
+      "text": "Japan's Emperor Akihito to abdicate on April 30, 2019 TOKYO (Reuters) - Emperor Akihito, who has spent much of his nearly three decades on Japan s throne seeking to soothe the wounds of World War Two, will step down on April 30, 2019, the first abdication by a Japanese monarch in about two centuries, the government said on Friday, formally ending weeks of debate about the ageing monarch's succession.",
+      "label": "real",
+      "probability": 0.9539111350924625,
+      "top_terms": [
+        [
+          "(Reuters",
+          0.23992691434754615
+        ],
+        [
+          "said",
+          0.169017760899918
+        ],
+        [
+          "Friday",
+          0.06565106523436183
+        ],
+        [
+          "Japan",
+          0.052573461158202064
+        ],
+        [
+          "government",
+          0.045530761219689395
+        ],
+        [
+          "Japan",
+          0.036606351261147925
+        ],
+        [
+          ", formally",
+          0.033771826529653125
+        ],
+        [
+          "TOKYO",
+          0.028285758767006307
+        ],
+        [
+          "seeking",
+          0.026928130435589177
+        ],
+        [
+          "Japanese",
+          0.017826986774851318
+        ]
+      ],
+      "rationale": "The model predicted this article as real with very high confidence, driven primarily by formatting patterns the model associates with this label in its training data. The dominant signal comes from \"(Reuters,\" a wire-service dateline marker that contributes +0.240\u2014by far the largest weight\u2014alongside the dateline location \"TOKYO\" (+0.028). Supporting this are tokens like \"said\" (+0.169) and \"Friday\" (+0.066), which are structural elements common in news reporting that the model learned to associate with real news, plus country and government-related terms (\"Japan,\" \"government,\" \"Japanese\") that correlate with this label in the training data. Together, these tokens create a strong statistical signal toward the real label, though the weight is concentrated in source attributions and formatting conventions rather than content features.",
+      "violations": [],
+      "passed": true
+    },
+    {
+      "tag": "real_reuters_dateline_2",
+      "text": "Democrats in Congress brace for new Iran nuclear fight WASHINGTON (Reuters) - As Congress faces a possible fight over the future of the Iran nuclear agreement, senior Senate Democrats demanded on Wednesday that the Trump administration provide lawmakers with any information showing Tehran is not complying with the deal.",
+      "label": "real",
+      "probability": 0.9801104251960968,
+      "top_terms": [
+        [
+          "(Reuters",
+          0.30930829492568573
+        ],
+        [
+          "Wednesday",
+          0.1540413732886449
+        ],
+        [
+          "lawmakers",
+          0.12298650462132193
+        ],
+        [
+          "WASHINGTON",
+          0.1118599246534608
+        ],
+        [
+          "information",
+          -0.05207482869421319
+        ],
+        [
+          "Senate",
+          0.03594436358807053
+        ],
+        [
+          "provide",
+          0.033392393771060666
+        ],
+        [
+          "Tehran",
+          0.03261142689059619
+        ],
+        [
+          "administration",
+          0.02451756019482797
+        ],
+        [
+          "demanded",
+          -0.024139405087896207
+        ]
+      ],
+      "rationale": "The model predicts this article as real with very high confidence (0.980), driven primarily by formatting patterns and source markers the model associates with real news in its training data. The token \"(Reuters\" carries the strongest signal (+0.309), a wire-service dateline that correlates with the real label; similarly, \"WASHINGTON\" (+0.112) and the day-of-week marker \"Wednesday\" (+0.154) are formatting conventions the model has learned to associate with real news. Supporting these are substantive political terms like \"lawmakers\" (+0.123), \"Senate\" (+0.036), and \"administration\" (+0.025), which appear more frequently in real articles in the training set. A few tokens such as \"information\" and \"demanded\" push weakly toward fake, but these are vastly outweighed by the real-label signals, leaving the model's prediction solidly confident.",
+      "violations": [],
+      "passed": true
+    },
+    {
+      "tag": "fake_typical_style",
+      "text": "DEPLORABLE! HILLARY'S Campaign Is In PANIC Mode...Their Latest RACIST FROG Story Proves It. What happens when Hillary s poll numbers take a nose-dive after she s caught having convulsions in a press-free zone, passes out, and has to lifted into her vehicle by secret service?",
+      "label": "fake",
+      "probability": 0.008101238186976955,
+      "top_terms": [
+        [
+          "! HILLARY",
+          -0.04540189216683262
+        ],
+        [
+          "secret",
+          -0.04495676430787975
+        ],
+        [
+          "press",
+          -0.04295410359961488
+        ],
+        [
+          "Hillary",
+          -0.03968034672214643
+        ],
+        [
+          "-free",
+          -0.021477416189668617
+        ],
+        [
+          "Story",
+          -0.018680276421355432
+        ],
+        [
+          "Campaign",
+          0.01504961095282802
+        ],
+        [
+          "lifted",
+          0.01495105922297952
+        ],
+        [
+          "zone",
+          0.011313647423143815
+        ],
+        [
+          "RACIST",
+          -0.011132162681326203
+        ]
+      ],
+      "rationale": "The model predicts this article as fake with very high confidence (0.008 probability of being real). The prediction is driven almost entirely by tokens that the model associates with fake news in its training data: \"! HILLARY,\" \"secret,\" \"press,\" \"Hillary,\" \"RACIST,\" and \"Story\" all push strongly toward the fake label, with the first two each carrying roughly triple the weight of any real-leaning token. A few tokens like \"Campaign,\" \"lifted,\" and \"zone\" weakly push toward real, but they are substantially outweighed by the fake-associated terms. The model appears to have learned that this particular combination of words and formatting patterns\u2014sensational capitalization, references to Hillary combined with words like \"secret,\" \"panic,\" and \"racist\"\u2014correlates with fabricated content in the training data.",
+      "violations": [],
+      "passed": true
+    },
+    {
+      "tag": "fake_typical_style_2",
+      "text": "LOVE HIM OR HATE HIM...HERE ARE 7 WAYS TRUMP HELPS THE SPINELESS GOP. The GOP doesn t know it yet, but they need Trump more than he needs them. Donald Trump will not be the Republican presidential nominee in 2016. He does not have the infrastructure, he does not have the organization.",
+      "label": "fake",
+      "probability": 0.036396317133107266,
+      "top_terms": [
+        [
+          "Republican",
+          0.17868755270839712
+        ],
+        [
+          "presidential",
+          0.17673565034013025
+        ],
+        [
+          "GOP",
+          -0.10768447613400436
+        ],
+        [
+          "GOP",
+          -0.10439210021572252
+        ],
+        [
+          "doesn",
+          -0.06708092485504744
+        ],
+        [
+          "know",
+          -0.05586210159709495
+        ],
+        [
+          "HATE",
+          -0.04526301104550947
+        ],
+        [
+          "does",
+          -0.03824942473422828
+        ],
+        [
+          "does",
+          -0.035179635348193614
+        ],
+        [
+          "nominee",
+          0.026545858175614126
+        ]
+      ],
+      "rationale": "The model predicted this article as fake with high confidence (0.036 probability of real). Two tokens push moderately toward the real label: \"Republican\" and \"presidential\" are patterns the model associates with the real label in its training data. However, these are heavily outweighed by multiple tokens pushing toward fake, especially repeated instances of \"GOP\" (combined weight of about \u22120.21) and colloquial phrases like \"doesn,\" \"know,\" \"HATE,\" and \"does\" (collectively contributing around \u22120.24 toward fake). The cumulative effect of this informal, opinion-driven language\u2014combined with the sensational framing evident in tokens like \"HATE\"\u2014drives the model's strong fake classification, overwhelming the positive signals from formal political terminology.",
+      "violations": [],
+      "passed": true
+    },
+    {
+      "tag": "edge_short_neutral",
+      "text": "The city council voted on Tuesday to approve the new budget proposal after a lengthy debate.",
+      "label": "fake",
+      "probability": 0.4744813720993049,
+      "top_terms": [
+        [
+          "Tuesday",
+          0.3000737551574179
+        ],
+        [
+          "voted",
+          -0.16382912022590362
+        ],
+        [
+          "council",
+          -0.14752185518449848
+        ],
+        [
+          "debate",
+          0.07702060224260943
+        ],
+        [
+          "budget",
+          0.0698374827039306
+        ],
+        [
+          "new",
+          0.048935198926368634
+        ],
+        [
+          "proposal",
+          0.04263984188801223
+        ],
+        [
+          "city",
+          0.02314970257725242
+        ],
+        [
+          "lengthy",
+          -0.020633522185253918
+        ],
+        [
+          "approve",
+          0.017249180305952006
+        ]
+      ],
+      "rationale": "The model's prediction is nearly evenly split (47.4% confidence in real), reflecting mixed signals in the token weights. While \"Tuesday\" carries the strongest individual weight (+0.300) pushing toward real\u2014a formatting pattern the model associates with real news in its training data\u2014this is substantially opposed by tokens like \"voted\" and \"council\" (\u22120.164 and \u22120.148), which the model has learned to associate with fake content. Supporting tokens such as \"debate,\" \"budget,\" and \"proposal\" add modest weight toward real, but they do not overcome the countervailing signals. Overall, the model leans slightly toward fake, but only marginally: the competing pushes in opposite directions leave the prediction in a zone of ambiguity.",
+      "violations": [],
+      "passed": true
+    },
+    {
+      "tag": "edge_real_content_fake_style",
+      "text": "BREAKING: City Council Just Voted And You Won't Believe What Happened Next! The council doesn t think residents will notice the new budget, but here s what they don t want you to know.",
+      "label": "fake",
+      "probability": 0.003941149406742641,
+      "top_terms": [
+        [
+          "know",
+          -0.054754488664716876
+        ],
+        [
+          "budget",
+          0.051359632514788874
+        ],
+        [
+          "BREAKING",
+          -0.042198523769797984
+        ],
+        [
+          "don",
+          -0.03864989167538673
+        ],
+        [
+          "doesn",
+          -0.03219707487206855
+        ],
+        [
+          "Just",
+          -0.029091877433851675
+        ],
+        [
+          "think",
+          -0.023368556075259804
+        ],
+        [
+          "Believe",
+          -0.021724075969725472
+        ],
+        [
+          "residents",
+          0.017781614785692134
+        ],
+        [
+          "want",
+          -0.017768615739500997
+        ]
+      ],
+      "rationale": "The model predicts this article as fake with very high confidence (99.6%), driven overwhelmingly by tokens associated with sensationalist phrasing patterns in the training data. Words like \"BREAKING,\" \"Just,\" \"know,\" \"don't,\" \"think,\" and \"Believe\" \u2014 along with the clickbait-style structure \"You Won't Believe What Happened Next\" \u2014 all push strongly toward the fake label. These tokens appear to correlate in the training data with articles designed to provoke engagement through emotional language and conspiratorial framing rather than straightforward reporting. The only countervailing signal is \"budget,\" which pushes weakly toward real, and a marginal contribution from \"residents,\" but these are far outweighed by the accumulated effect of the sensationalist language markers that dominate the prediction.",
+      "violations": [],
+      "passed": true
+    }
+  ]
+}

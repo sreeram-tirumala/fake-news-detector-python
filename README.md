@@ -36,6 +36,7 @@ scripts/             training + evaluation
   prepare_isot.py, train_sklearn.py, train_transformer.py, make_viz_artifacts.py
   eval_leakage.py       quantifies how much of the reported accuracy is dataset-artifact leakage
   eval_ood.py           temporal holdout + optional external-dataset generalization check
+  eval_hallucination.py scores the Claude narration layer against banned-phrase probe cases
 ```
 
 The old Streamlit app (`app.py`) has been retired now that React has full feature parity across
@@ -67,6 +68,7 @@ banned words.
 | **Leakage eval** (`scripts/eval_leakage.py`) | Done. Honest accuracy is ~91.56%, not the naively-reported 99.24%, once Reuters-dateline artifacts are stripped and the test split is held out by topic. See `artifacts/leakage_eval.json`. |
 | **`scripts/eval_ood.py`** (out-of-distribution eval) | Done. Temporal holdout (train on pre-Oct-2017 ISOT, test on later articles) shows no meaningful degradation (+0.4% vs. random-split baseline) -- consistent with the leakage finding that the model's signal is mostly a stable formatting artifact, not evolving content. Also supports `--ood_csv` to test against a genuinely different dataset (LIAR, FakeNewsNet, etc.) if you have one. See `artifacts/ood_eval.json`. |
 | **SHAP + Claude Haiku narration** | Done, tested against real ISOT articles and live-verified in the browser. Anti-hallucination guardrail hardened after a probe caught the model describing the Reuters-dateline artifact as "genuine"/"authentic" reporting -- banned-phrase check now runs in code, not just the prompt. |
+| **`scripts/eval_hallucination.py`** (narration hallucination eval) | Done. Re-runnable probe over 6 cases (2 Reuters-dateline "real" articles, 2 typical fake-style articles, 2 ambiguous edge cases) scored against the banned-phrase check enforced in production. Current score: **6/6 passed, 0 banned-phrase violations**. See `artifacts/hallucination_eval.json`. |
 | **URL ingestion** (`utils/article_fetch.py`) | Done. trafilatura primary, Claude `web_fetch` fallback for JS-heavy/blocked pages, clean failure path for genuinely inaccessible URLs. |
 | **Web corroboration agent** (`utils/rag_agent.py`) | Done. Claude Sonnet 5 + live web search, structured output, anti-hallucination cross-check against actual search results. Verified returning real, distinct, non-fabricated sources. |
 | **FastAPI backend** | Done. All endpoints tested directly: `/predict`, `/predict/url`, `/predict/explain`, `/corroborate`, and the 7 `/data/*` endpoints. |
